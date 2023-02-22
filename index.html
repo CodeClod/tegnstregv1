@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas width="600" height ="300"> </canvas>
+<script>
+    const cx = document.querySelector("canvas").getContext("2d");
+    let r = 227;
+    let g = 210;
+    let b = 51;
+    function branch(length, angle, scale) {
+        cx.fillRect(0, 0, 1, length);
+        cx.save();
+        cx.translate(0,length);
+        cx.rotate(-angle);
+        cx.fillStyle = `rgb(${r},${g},${b})`;
+        branch(length*scale, angle, scale);
+        cx.rotate(2*angle);
+        branch(length*scale, angle, scale);
+        cx.restore();
+
+
+    }
+    cx.translate(100,100);
+
+    branch(60, 0.5, 0.8);
+</script>
+</body>
+</html>
